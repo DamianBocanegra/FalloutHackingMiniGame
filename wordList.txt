@@ -1,0 +1,13 @@
+3
+red
+med
+sam
+ran
+row
+cow
+moo
+ned
+gut
+ted
+ten
+one

@@ -5,15 +5,16 @@ def addPassword(list, password):
     list.append(password)
 
 def checkAnswer(correctPassword, guess):
+    print()
+    index = 0
+    correctLetters = 0
     for letter in correctPassword:
-        correctLetters = 0
-        index = 0
         if guess[index] != letter:
             index += 1
         else:
             index += 1
             correctLetters += 1
-        return correctLetters
+    return correctLetters
 
 def printPasswordList(list):
     for word in list:
@@ -22,7 +23,7 @@ def printPasswordList(list):
 def enterPasswords(passwords):
     entering = True
     while entering:
-        word = raw_input("Please enter password: ")
+        word = input("Please enter password: ")
         if word != "0":
             addPassword(passwords, word)
         else:
@@ -33,12 +34,13 @@ def guessPasswordsGame(passwords, correctKey):
     playing = True
     while playing:
         printPasswordList(passwords)
-        playerInput = raw_input("Select Password: ")
-        correctLetters = checkAnswer(correctKey, playerInput)
+        playerInput = input("Select Password: ")
+        correctLetters = checkAnswer(correctKey, str(playerInput))
         if correctLetters < len(correctKey):
-            print("Incorrect. Letters: " + corrrectLetters + "/" + len(correctKey))
+            print("Incorrect. Letters: " + str(correctLetters) + "/" + str(len(correctKey)))
         else:
             print("SUCCESS!")
+            playing = False
 
 def main():
     #Fill in List of Passwords
@@ -46,10 +48,12 @@ def main():
     play = True
     while play:
         enterPasswords(passwords)
-        correctKey = passwords[random.randint(0, len(passowrds) - 1)]
+        correctKey = passwords[random.randint(0, len(passwords) - 1)]
+        print("Correct key: " + correctKey)
         guessPasswordsGame(passwords, correctKey)
         #loop is only running once for testing purposes
         play = False
-        
+
+main()
     
 
