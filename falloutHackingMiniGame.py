@@ -30,6 +30,8 @@ def enterPasswords(passwords):
             entering = False
     return passwords
 
+def removeOptions(passwords):
+
 def guessPasswordsGame(passwords, correctKey):
     playing = True
     while playing:
