@@ -5,7 +5,6 @@ def addPassword(list, password):
     list.append(password)
 
 def checkAnswer(correctPassword, guess):
-    print()
     index = 0
     correctLetters = 0
     for letter in correctPassword:
@@ -21,16 +20,12 @@ def printPasswordList(list):
         print(word)
 
 def enterPasswords(passwords):
-    entering = True
-    while entering:
-        word = input("Please enter password: ")
-        if word != "0":
-            addPassword(passwords, word)
-        else:
-            entering = False
+    f = open("wordList.txt", "r")
+    f1 = f.readlines()
+    for x in f1:
+        addPassword(passwords, x[0:len(x) - 1])
+        
     return passwords
-
-def removeOptions(passwords):
 
 def guessPasswordsGame(passwords, correctKey):
     playing = True
